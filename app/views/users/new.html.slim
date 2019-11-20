@@ -1,0 +1,23 @@
+.main-container
+  .signup-container
+    h2
+      | 新規登録
+    = form_for(@user) do |f|
+      .field
+        = f.label :name
+        br
+        = f.text_field :name, autofocus: true, class: "name"
+      .field
+        = f.label :email
+        br
+        = f.email_field :email, autocomplete: "email", class: "email"
+      .field
+        = f.label :password
+        br
+        = f.password_field :password, autocomplete: "new-password", class: "password"
+      .field
+        = f.label :password_confirmation
+        br
+        = f.password_field :password_confirmation, autocomplete: "new-password", class: "password"
+      .actions
+        = f.submit "新規登録", class: "submit-btn"

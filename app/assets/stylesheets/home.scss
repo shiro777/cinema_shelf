@@ -1,13 +1,14 @@
 // top
 .top-container {
-  background: image-url('top.jpg') center/cover;
+  background: image-url('top.png') top/cover;
   text-align: center;
   color: white;
+  margin-top: 50px;
+  padding: 200px 0 100px;
 
   h1 {
     font-size: 60px;
     margin: 0;
-    padding-top: 200px;
     padding-bottom: 60px;
     letter-spacing: 2px;
     font-weight: bold;

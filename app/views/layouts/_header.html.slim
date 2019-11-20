@@ -1,0 +1,14 @@
+header
+  .header-logo
+    = link_to '/' do
+      = image_tag('logo.png', {size: '30x30'})
+      span CinemaShelf
+  .header-menus
+    = link_to 'Cinemas', '#'
+    = link_to 'About', '#'
+    = link_to '新規登録', signup_path
+    / = link_to 'Cinemas', '#'
+    / = link_to 'About', '#'
+    / = link_to '人気レビュー', '#'
+    / = link_to '新着レビュー', '#'
+    / = link_to '投稿する', '#'

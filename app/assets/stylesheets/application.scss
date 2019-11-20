@@ -10,94 +10,14 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
  */
 
-/* 全体 */
-body {
-  font-family: "Helvetica Neue", Helvetica, "Meiryo", Arial;
-  box-sizing: border-box;
-  margin: 0;
-  color: #333;
-}
-
-a {
-  text-decoration: none;
-  color: #eee
-}
-
-li {
-  list-style: none;
-}
-
-/* ヘッダー */
-header {
-  height: 50px;
-  background-color: #222;
-  border-bottom: solid 1px #bcbcbc;
-  z-index: 1;
-  width: 100%;
-}
-
-.header-logo {
-  float: left;
-  height: 50px;
-  padding: 0;
-  color: white;
-  font-size: 25px;
-  letter-spacing: 2px;
-  line-height: 50px;
-
-  img {
-    display: inline-block;
-    padding: 10px;
-  }
-
-  span {
-    display: inline-block;
-    height: 50px;
-    vertical-align: top;
-  }
-
-}
-
-.header-menus {
-  float: right;
-  height: 50px;
-  line-height: 50px;
-
-  ul {
-    margin: 0;
-  }
-
-  li {
-    display: inline-block;
-    height: 50px;
-    vertical-align: top;
-    padding: 0 12px;
-    color: white;
-    font-size: 18px;
-  }
-
-  li :hover {
-    color: #e0162e;
-  }
-}
-
-/* フッター */
-footer {
-  height: 30px;
-  background-color: #222;
-  border-top: solid 1px #bcbcbc;
-  z-index: 1;
-  width: 100%;
-  text-align: center;
-  margin-top: auto;
-
-  span {
-    font-size: 12px;
-    color: white;
-    line-height: 30px;
-  }
-}
+@import "reset";
+@import "valiables";
+@import "component";
+@import "application_layout";
+@import "home";
+@import "users";
+// @import "cinemas";
+// @import "posts";

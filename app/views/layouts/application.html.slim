@@ -9,18 +9,6 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    header
-      .header-logo
-        = link_to "/" do
-          = image_tag("logo.png", {size: "30x30"})
-          span CinemaShelf
-      .header-menus
-        ul
-          li Cinemas
-          li 人気レビュー
-          li 新着レビュー
-          li 投稿する
-          li About
+    = render 'layouts/header'
     = yield
-    footer
-      span Copyright © 2019 CinemaShelf All Rights Reserved.
+    = render 'layouts/footer'

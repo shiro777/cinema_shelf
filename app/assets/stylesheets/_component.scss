@@ -1,0 +1,15 @@
+// button
+@mixin red-btn {
+  background-color: $color-red;
+  color: white;
+  line-height: 40px;
+  padding: 0 15px;
+  margin: 5px;
+}
+@mixin follow-btn {
+  padding: 10px;
+  background-color: $color-blue;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
