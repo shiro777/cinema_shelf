@@ -55,15 +55,15 @@ RSpec.describe User, type: :model do
     expect(duplicate_user).to_not be_valid
   end
 
-  # specify 'password should be present (nonblank)' do
-  #   @user.password = @user.password_confirmation = ' ' * 6
-  #   assert_not @user.valid?
-  # end
+  specify 'password is present (nonblank)' do
+    user.password = user.password_confirmation = ' ' * 6
+    expect(user).to_not be_valid
+  end
 
-  # test 'password should have a minimum length' do
-  #   @user.password = @user.password_confirmation = 'a' * 5
-  #   assert_not @user.valid?
-  # end
+  specify 'password have a minimum length' do
+    user.password = user.password_confirmation = 'a' * 5
+    expect(user).to_not be_valid
+  end
 
   # test 'authenticated? should return false for a user with nil digest' do
   #   assert_not @user.authenticated?(:remember, '')
