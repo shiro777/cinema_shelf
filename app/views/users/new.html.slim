@@ -1,26 +1,20 @@
-.main-container
-  .signup-container
-    h2
-      | 新規登録
+.signup-wrapper
+  .signup-form
     = form_with(model: @user, local: true) do |f|
       = render 'shared/error_messages'
       .field
         = f.label :name
-        br
-        = f.text_field :name, autofocus: true, class: "name"
+        = f.text_field :name, autofocus: true, class: 'name'
       .field
         = f.label :email
-        br
-        = f.email_field :email, autocomplete: "email", class: "email"
+        = f.email_field :email, autocomplete: 'email', class: 'email'
       .field
         = f.label :password
         p
-          | （パスワードは6文字以上にして下さい。）
-        br
-        = f.password_field :password, autocomplete: "new-password", class: "password"
+          | （6文字以上必須）
+        = f.password_field :password, autocomplete: 'new-password', class: "password"
       .field
         = f.label :password_confirmation
-        br
-        = f.password_field :password_confirmation, autocomplete: "new-password", class: "password"
+        = f.password_field :password_confirmation, autocomplete: 'new-password', class: "password"
       .actions
-        = f.submit "新規登録", class: "submit-btn"
+        = f.submit '新規登録', class: ['submit','button']

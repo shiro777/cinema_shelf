@@ -1,11 +1,14 @@
 // button
-@mixin btn($bg-color: rgb(225, 10, 40), $hov-bg-color: rgb(245, 30, 60)) {
+@mixin button($bg-color: rgb(225, 10, 40), $hov-bg-color: rgb(245, 30, 60)) {
   display: inline-block;
   width: 140px;
   height: 50px;
   line-height: 50px;
+  vertical-align: middle;
+  padding: 0;
   background-color: $bg-color;
   font-size: 20px;
+  color: #fff;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.700);
   border-radius: 3px;
   box-shadow: 0 4px 3px rgba(0, 0, 0, 0.700);

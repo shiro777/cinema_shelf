@@ -1,61 +1,40 @@
 // users-new
-.standard-background-container {
-
+.signup-wrapper {
+  background: image-url('main.png') top/cover;
+  margin-top: 50px;
+  padding: 90px 0 150px;
 }
 
-.signup-container {
-  width: 400px;
-  margin: 40px auto;
-  padding: 50px;
-  border: solid 1px grey;
-  background-color: white;
+.signup-form {
+  width: 320px;
+  margin: 0 auto;
+  padding: 40px 30px 50px;
+  font-size: 16px;
   text-align: center;
-  box-shadow: 0 10px 15px #000;
-
-  h2 {
-    font-size: 40px;
-    padding-bottom: 20px;
-  }
-
-  h3 {
-    line-height: 20px;
-    font-size: 18px;
-  }
+  color: #333;
+  background-color: rgb(255, 230, 255);
+  border: solid 1px #333;
+  border-radius: 3px;
+  box-shadow: 0 5px 10px #000;
 
   input {
-    font-size: 20px;
-    margin: 10px 0;
-  }
-
-  .name,
-  .email,
-  .password,
-  .submit-btn,
-  .btn {
     width: 100%;
+    font-size: 16px;
+    text-align: center;
+    margin: 5px 0 10px;
+    color: #333;
   }
 
-  .submit-btn {
+  p {
+    margin: 5px 0 0;
+  }
+
+  .submit.button {
+    @include button;
+    margin: 30px auto 0;
     border-style: none;
-    background-color: $color-red;
-    color: white;
-    font-size: 18px;
-    height: 50px;
-    width: 120px;
     cursor: pointer;
   }
-
-  // .btn {
-  //   background-color: $color-red;
-  //   color: white;
-  //   line-height: 50px;
-  //   font-size: 16px;
-  //   margin: 10px 0;
-  // }
-
-  // a {
-  //   line-height: 30px;
-  // }
 }
 
 // user-show
