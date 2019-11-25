@@ -1,9 +1,9 @@
 header
   .header-logo
     = link_to '/' do
-      = image_tag('logo.png', {size: '30x30'})
+      = image_tag('logo.png')
       span CinemaShelf
-  .header-menus
+  nav.header-menus
     = link_to 'Cinemas', '#'
     = link_to 'About', '#'
     = link_to '新規登録', signup_path

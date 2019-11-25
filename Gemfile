@@ -4,6 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.3'
 gem 'bcrypt'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootstrap-sass'
 gem 'coffee-rails', '~> 4.2'
 gem 'dotenv-rails'
 gem 'jbuilder', '~> 2.5'
