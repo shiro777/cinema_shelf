@@ -1,0 +1,17 @@
+.user-wrapper
+  .user-information
+    - if @user.image.nil?
+        = image_tag 'no_image.png'
+    - else
+        = image_tage @user.image.url
+    p
+      = @user.name
+    .follow.faa-parent.animated-hover
+      = icon 'far', 'star', class: 'faa-wrench'
+      | Follow
+    .follower.faa-parent.animated-hover
+      = icon 'far', 'star', class: 'faa-wrench'
+      | Follwer
+    .buttons
+      = link_to "編集", @user, class: "button"
+      = link_to "ログアウト", '#', class: "button"

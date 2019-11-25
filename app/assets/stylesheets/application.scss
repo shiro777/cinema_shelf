@@ -18,7 +18,10 @@
 @import "component";
 // @import "bootstrap-sprockets";
 // @import "bootstrap";
-@import "application_layout";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+@import 'font-awesome-animation';
+@import "main";
 @import "home";
 @import "users";
 // @import "cinemas";

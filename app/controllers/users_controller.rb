@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    # @user = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def new
@@ -17,8 +17,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       # @user.send_activation_email
-      flash[:info] = "Please check your email to activate your account."
-      redirect_to root_url
+      # flash[:info] = "Please check your email to activate your account."
+      redirect_to @user
     else
       render 'new'
     end
@@ -42,6 +42,6 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :email, :password,
-                                  :password_confirmation)
+                                   :password_confirmation, :image)
     end
 end

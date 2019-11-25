@@ -1,8 +1,9 @@
 // top
 .top-wrapper {
   background: image-url('top.png') top/cover;
+  height: 750px;
   margin: 50px auto 0;
-  padding: 200px 0 0;
+  padding-top: 200px;
   text-align: center;
 
   h1 {
@@ -17,16 +18,22 @@
     font-size: 24px;
     line-height: 36px;
     text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.700);
+
+    &+p {
+      margin-bottom: 100px;
+    }
   }
-}
 
-.buttons {
-  padding: 100px 0 120px;
-  text-align: center;
+  .buttons {
+    text-align: center;
 
-  .button {
-    @include button;
-    margin: 0 20px;
+    .button {
+      @include button;
+
+      +.button {
+        margin-left: 20px;
+      }
+    }
   }
 }
 
