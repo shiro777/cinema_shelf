@@ -11,6 +11,11 @@ RSpec.describe HomeController, type: :controller do
       get :top
       expect(response).to have_http_status '200'
     end
+
+    it 'returns http success' do
+      get :top
+      expect(response).to have_http_status(:success)
+    end
   end
 
   describe '#about' do
@@ -22,6 +27,11 @@ RSpec.describe HomeController, type: :controller do
     it 'returns a 200 response' do
       get :about
       expect(response).to have_http_status '200'
+    end
+
+    it 'returns http success' do
+      get :about
+      expect(response).to have_http_status(:success)
     end
   end
 end
