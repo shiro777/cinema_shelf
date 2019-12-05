@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_action user_params
+  before_action :user_params, only: %w[create update]
 
   def index
     # @users = User.paginate(page: params[:page])

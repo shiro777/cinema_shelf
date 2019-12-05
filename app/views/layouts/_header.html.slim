@@ -4,11 +4,12 @@ header.clearfix
       = image_tag('logo.png')
       span CinemaShelf
   nav
-    = link_to 'Cinemas', '#'
-    = link_to 'About', about_path
-    = link_to '新規登録', signup_path
-    / = link_to 'Cinemas', '#'
-    / = link_to 'About', '#'
+    - if current_user
+      = link_to 'Cinemas', '#'
+      = link_to 'About', about_path
+      = link_to '新規登録', signup_path
+      = link_to 'ログイン', login_path
+    / = link_to 'ユーザー', '#'
     / = link_to '人気レビュー', '#'
     / = link_to '新着レビュー', '#'
     / = link_to '投稿する', '#'
