@@ -1,6 +1,6 @@
 .signup-wrapper
   .signup-form
-    = form_with(model: @user, local: true) do |f|
+    = form_with(model: @user, url: signup_url, local: true) do |f|
       = render 'shared/error_messages'
       .field
         = f.label :name

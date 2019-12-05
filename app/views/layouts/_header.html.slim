@@ -1,14 +1,15 @@
-header
-  .header-logo
+header.clearfix
+  .logo
     = link_to '/' do
       = image_tag('logo.png')
       span CinemaShelf
-  nav.header-menus
+  nav
     = link_to 'Cinemas', '#'
-    = link_to 'About', '#'
+    = link_to 'About', about_path
     = link_to '新規登録', signup_path
     / = link_to 'Cinemas', '#'
     / = link_to 'About', '#'
     / = link_to '人気レビュー', '#'
     / = link_to '新着レビュー', '#'
     / = link_to '投稿する', '#'
+.header-behind

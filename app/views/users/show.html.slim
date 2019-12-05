@@ -1,5 +1,5 @@
 .user-wrapper
-  .user-container
+  .user-container.clearfix
     .user-information
       - if @user.image.nil?
           = image_tag 'no_image.png'
@@ -20,3 +20,10 @@
       .heading.faa-parent.animated-hover
         = icon 'far', 'star', class: 'faa-wrench'
         | Reviews
+      .reviews
+        .reviews-filter
+          ul
+            li
+              | 人気順
+            li
+              | 新着順

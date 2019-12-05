@@ -17,10 +17,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       # @user.send_activation_email
-      # flash[:info] = "Please check your email to activate your account."
+      flash[:success] = '新規登録が完了しました。'
       redirect_to @user
     else
-      render 'new'
+      render action: 'new'
     end
   end
 

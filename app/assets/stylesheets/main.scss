@@ -1,44 +1,67 @@
 // 全体 //
-body {
-  color: #fff;
+html {
+  font-size: 62.5%;
 }
 
-* {
+body {
+  color: white;
+  font-size: 1.6rem;
   font-family: 'Lato', 'Noto Sans JP', '游ゴシック Medium', '游ゴシック体',
-  'Yu Gothic Medium', YuGothic, 'ヒラギノ角ゴ ProN',
-  'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo,
+    'Yu Gothic Medium', YuGothic, 'ヒラギノ角ゴ ProN',
+    'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo,
     'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+}
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 a {
   text-decoration: none;
-  color: #fff;
+  color: white;
 }
 
 li {
   list-style: none;
 }
 
-// ヘッダー //
-header {
-  height: 50px;
-  border-bottom: solid 1px rgba(255, 255, 255, 0.4);
-  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.4);
-  background-color: #222;
-  z-index: 1;
-  width: 100%;
-  position: fixed;
-  top: 0;
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
 }
 
-.header-logo a {
+.flash {
+  width: 100%;
+  height: 40px;
+  background-color: $background-pink;
+  color: $font-red;
+  font-size: 2rem;
+  line-height: 40px;
+  text-align: center;
+  @include text-shadow-light-s;
+}
+
+// header //
+header {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 50px;
+  background-color: $background-black;
+  @include border-bottom-rich;
+}
+
+.logo a {
   float: left;
   height: 50px;
   padding: 0;
-  font-size: 25px;
-  letter-spacing: 2px;
+  font-size: 2.5rem;
   line-height: 50px;
+  letter-spacing: 2px;
 
   img {
     display: inline-block;
@@ -51,49 +74,48 @@ header {
     display: inline-block;
     height: 50px;
     vertical-align: top;
-    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.700);
+    @include text-shadow-l;
     transition: 0.2s;
 
     &:hover {
-      color: rgb(255, 70, 70);
+      color: $font-red;
     }
   }
 }
 
-nav.header-menus {
+nav {
   float: right;
   height: 50px;
   line-height: 50px;
-  text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.700);
+  @include text-shadow-m;
 
   a {
     display: inline-block;
     height: 50px;
     margin-right: 25px;
-    font-size: 18px;
+    font-size: 2rem;
     transition: 0.2s;
 
     &:hover {
-      color: rgb(255, 70, 70);
+      color: $font-red;
     }
   }
 }
 
-// フッター //
-footer {
-  height: 30px;
-  background-color: #222;
-  border-top: solid 1px rgba(255, 255, 255, 0.4);
-  box-shadow: inset 0 1px rgba(0, 0, 0, 0.4);
-  width: 100%;
-  text-align: center;
-  margin-top: auto;
+// main
+main {
+  margin-top: 50px;
+}
 
-  span {
-    font-size: 12px;
-    line-height: 30px;
-    text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.700);
-  }
+footer {
+  width: 100%;
+  height: 30px;
+  background-color: $background-black;
+  font-size: 1.2rem;
+  line-height: 30px;
+  text-align: center;
+  @include border-top-rich;
+  @include text-shadow-s;
 }
 
 // デバッグ
@@ -103,4 +125,5 @@ footer {
   float: left;
   width: 100%;
   margin-top: 45px;
+  color: $font-black;
 }

@@ -11,8 +11,10 @@ html
     = stylesheet_link_tag    'https://fonts.googleapis.com/css?family=Lato:400,700|Noto+Sans+JP:400,700'
   body
     = render 'layouts/header'
-    - flash.each do |message_type, message|
-      = message
-    = yield
+    main
+      - flash.each do |message_type, message|
+        .flash
+          = message
+      = yield
     = render 'layouts/footer'
     = debug(params) if Rails.env.development?

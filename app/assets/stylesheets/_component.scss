@@ -1,28 +1,172 @@
 // button
-@mixin button($bg-color: rgb(225, 10, 40), $hov-bg-color: rgb(245, 30, 60)) {
+@mixin border {
+  border: solid 1px $border-black;
+}
+
+@mixin border-rich {
+  border: solid 1px $border-white;
+  box-shadow: inset 0 0 0 1px $border-black;
+}
+
+@mixin border-rich-2 {
+  border: solid 1px $border-black;
+  box-shadow: inset 0 0 0 1px $border-white;
+}
+
+@mixin border-top-light {
+  border-top: solid 1px $border-white-light;
+}
+
+@mixin border-bottom-light {
+  border-bottom: solid 1px $border-white-light;
+}
+
+@mixin border-top-rich {
+  border-top: solid 1px $border-black;
+  box-shadow: inset 0 1px 0 $border-white;
+}
+
+@mixin border-top-rich-2 {
+  border-top: solid 1px $border-white;
+  box-shadow: inset 0 1px 0 $border-black;
+}
+
+@mixin border-bottom-rich {
+  border-bottom: solid 1px $border-white;
+  box-shadow: inset 0 -1px 0 $border-black;
+}
+
+@mixin border-bottom-rich-2 {
+  border-bottom: solid 1px $border-black;
+  box-shadow: inset 0 -1px 0 $border-white;
+}
+
+@mixin text-shadow-light-s {
+  text-shadow: 1px 1px 1px $text-shadow-light;
+}
+
+@mixin text-shadow-s {
+  text-shadow: 1px 1px 1px $text-shadow;
+}
+
+@mixin text-shadow-m {
+  text-shadow: 2px 2px 1px $text-shadow;
+}
+
+@mixin text-shadow-l {
+  text-shadow: 3px 3px 1px $text-shadow;
+}
+
+@mixin text-shadow-ll {
+  text-shadow: 4px 4px 1px $text-shadow;
+}
+
+@mixin text-shadow-white-s {
+  text-shadow: 1px 1px 1px $text-shadow-white;
+}
+
+@mixin text-shadow-white-m {
+  text-shadow: 2px 2px 1px $text-shadow-white;
+}
+
+@mixin text-shadow-white-l {
+  text-shadow: 3px 3px 1px $text-shadow-white;
+}
+
+@mixin text-shadow-white-ll {
+  text-shadow: 4px 4px 1px $text-shadow-white;
+}
+
+@mixin box-shadow-light-s {
+  box-shadow: 0 1px 1px $box-shadow-light;
+}
+
+@mixin box-shadow-light-m {
+  box-shadow: 0 2px 1px $box-shadow-light;
+}
+
+@mixin box-shadow-light-l {
+  box-shadow: 0 3px 2px $box-shadow-light;
+}
+
+@mixin box-shadow-light-ll {
+  box-shadow: 0 4px 3px $box-shadow-light;
+}
+
+@mixin box-shadow-light-3l {
+  box-shadow: 0 5px 4px $box-shadow-light;
+}
+
+@mixin box-shadow-s {
+  box-shadow: 0 1px 1px $box-shadow;
+}
+
+@mixin box-shadow-m {
+  box-shadow: 0 2px 1px $box-shadow;
+}
+
+@mixin box-shadow-l {
+  box-shadow: 0 3px 2px $box-shadow;
+}
+
+@mixin box-shadow-ll {
+  box-shadow: 0 4px 3px $box-shadow;
+}
+
+@mixin box-shadow-3l {
+  box-shadow: 0 5px 4px $box-shadow;
+}
+
+@mixin button {
   display: inline-block;
   width: 140px;
   height: 50px;
-  line-height: 50px;
-  vertical-align: middle;
-  padding: 0;
-  background-color: $bg-color;
-  font-size: 20px;
-  color: #fff;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.700);
   border-radius: 3px;
-  box-shadow: 0 4px 3px rgba(0, 0, 0, 0.700);
+  background-color: $background-button-red;
+  color: white;
+  font-size: 2rem;
+  line-height: 50px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
   transition: 0.2s;
+  @include box-shadow-light-l;
+  @include text-shadow-s;
 
   &:hover {
-    background-color: $hov-bg-color;
+    background-color: $background-button-hover-red;
   }
 }
 
-@mixin follow-btn {
-  padding: 10px;
-  background-color: $color-blue;
-  color: white;
-  text-decoration: none;
+@mixin component-template {
+  background-color: $background-blue;
   border-radius: 5px;
+  @include border;
+  @include box-shadow-l;
+}
+
+@mixin component-template-2 {
+  background-color: $background-blue-dark;
+  @include border-bottom-rich;
+}
+
+@mixin filter {
+  display: inline-block;
+  width: 110px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: $background-filter-blue;
+  color: white;
+  font-size: 2rem;
+  line-height: 40px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: 0.2s;
+  @include box-shadow-light-s;
+  @include text-shadow-s;
+
+  &:hover {
+    background-color: $background-filter-hover-blue;
+  }
 }
