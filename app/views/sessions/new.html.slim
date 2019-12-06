@@ -3,9 +3,9 @@
     = form_with(scope: :session, url: login_url, local: true) do |f|
       .field
         = f.label :email, 'メールアドレス'
-        = f.email_field :email, autocomplete: 'on', class: 'email'
+        = f.email_field :email, autocomplete: 'on', class: 'email', id: 'email'
       .field
         = f.label :password, 'パスワード'
-        = f.password_field :password, class: "password"
+        = f.password_field :password, class: 'password', id: 'password'
       .action
         = f.submit 'ログイン', class: ['submit','button']
