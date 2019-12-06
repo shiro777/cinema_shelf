@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'LogIn', type: :feature do
   let(:user) { FactoryBot.create(:user) }
 
-  scenario 'login with valid information followed by logout' do
+  scenario 'ログイン / ログアウトが出来る' do
     visit root_path
     click_link 'ログイン'
     fill_in 'email', with: user.email
