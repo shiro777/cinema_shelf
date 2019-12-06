@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'SignIn', type: :feature do
+RSpec.feature 'LogIn', type: :feature do
   let(:user) { FactoryBot.create(:user) }
 
   scenario 'login with valid information followed by logout' do
