@@ -4,17 +4,17 @@
       = render 'shared/error_messages'
       .field
         = f.label :name
-        = f.text_field :name, autofocus: true, class: 'name'
+        = f.text_field :name, autofocus: true, autocomplete: 'on', class: 'name'
       .field
         = f.label :email
-        = f.email_field :email, autocomplete: 'email', class: 'email'
+        = f.email_field :email, autocomplete: 'on', class: 'email'
       .field
         = f.label :password
         p
           | （6文字以上必須）
-        = f.password_field :password, autocomplete: 'new-password', class: "password"
+        = f.password_field :password, class: "password"
       .field
         = f.label :password_confirmation
-        = f.password_field :password_confirmation, autocomplete: 'new-password', class: "password"
+        = f.password_field :password_confirmation, class: "password"
       .action
         = f.submit '新規登録', class: ['submit','button']

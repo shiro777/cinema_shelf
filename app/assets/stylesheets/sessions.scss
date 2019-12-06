@@ -1,0 +1,39 @@
+// sessions-new
+.login-wrapper {
+  height: 750px;
+  padding-top: 120px;
+  background: image-url('main.png') top center / cover;
+}
+
+.login-form {
+  width: 320px;
+  margin: 0 auto;
+  padding: 40px 30px 50px;
+  border-radius: 3px;
+  background-color: $background-pink-light;
+  color: $font-black;
+  font-size: 1.6rem;
+  text-align: center;
+  @include border;
+  @include box-shadow-ll;
+
+  label {
+    display: block;
+    width: 100%;
+  }
+
+  input {
+    display: block;
+    width: 100%;
+    margin: 5px 0 10px;
+    color: $font-black;
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  .submit.button {
+    @include button;
+    margin: 30px auto 0;
+    border-style: none;
+  }
+}

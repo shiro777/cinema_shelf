@@ -5,11 +5,13 @@ header.clearfix
       span CinemaShelf
   nav
     = link_to 'Cinemas', '#'
-    = link_to 'About', about_path
-    = link_to '新規登録', signup_path
-    / = link_to 'Cinemas', '#'
-    / = link_to 'About', '#'
-    / = link_to '人気レビュー', '#'
-    / = link_to '新着レビュー', '#'
-    / = link_to '投稿する', '#'
-.header-behind
+    - if logged_in?
+      = link_to 'Users', '#'
+      = link_to 'Reviews', '#'
+      = link_to 'Review投稿', '#'
+      = link_to 'Profile', current_user
+      = link_to 'ログアウト', logout_path, method: :delete
+    - else
+      = link_to 'About', about_path
+      = link_to '新規登録', signup_path
+      = link_to 'ログイン', login_path

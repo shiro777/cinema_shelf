@@ -12,9 +12,7 @@ html
   body
     = render 'layouts/header'
     main
-      - flash.each do |message_type, message|
-        .flash
-          = message
+      = render 'layouts/flash'
       = yield
     = render 'layouts/footer'
     = debug(params) if Rails.env.development?

@@ -1,0 +1,11 @@
+.login-wrapper
+  .login-form
+    = form_with(scope: :session, url: login_url, local: true) do |f|
+      .field
+        = f.label :email, 'メールアドレス'
+        = f.email_field :email, autocomplete: 'on', class: 'email'
+      .field
+        = f.label :password, 'パスワード'
+        = f.password_field :password, class: "password"
+      .action
+        = f.submit 'ログイン', class: ['submit','button']

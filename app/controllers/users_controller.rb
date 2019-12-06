@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_action user_params
+  before_action :user_params, only: %w[create update]
 
   def index
     # @users = User.paginate(page: params[:page])
@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       # @user.send_activation_email
+      log_in @user
       flash[:success] = '新規登録が完了しました。'
       redirect_to @user
     else
