@@ -76,28 +76,25 @@ header {
     vertical-align: top;
     @include text-shadow-l;
     transition: 0.2s;
-
-    &:hover {
-      color: $font-red;
-    }
   }
 }
 
 nav {
   float: right;
   height: 50px;
-  line-height: 50px;
+  line-height: 49px;
   @include text-shadow-m;
 
   a {
     display: inline-block;
-    height: 50px;
-    margin-right: 25px;
+    height: 49px;
+    padding: 0 15px;
     font-size: 2rem;
+    vertical-align: top;
     transition: 0.2s;
 
     &:hover {
-      color: $font-red;
+      background-color: $background-black-light;
     }
   }
 }
