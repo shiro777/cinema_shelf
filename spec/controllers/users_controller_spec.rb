@@ -21,16 +21,22 @@ RSpec.describe UsersController, type: :controller do
   describe "#create" do
     let(:user_params) { FactoryBot.attributes_for(:user) }
 
-    it "sign up and redirects successfully" do
-      post :create, params: { user: user_params }
-      expect(logged_in?).to be true
-      expect(response).to redirect_to user_url(current_user)
+    it "sign up with session" do
+      create_user user_params
+      expect(session[:user_id]).to_not be_nil
     end
 
-    it "change Users.count" do
-      expect {
-        post :create, params: { user: user_params }
-      }.to change(User, :count).by(1)
+    it "redirects successfully after sign up" do
+      create_user user_params
+      expect(response).to redirect_to user_url(session[:user_id])
     end
+
+    it "change Users count" do
+      expect { create_user user_params }.to change(User, :count).by(1)
+    end
+  end
+
+  def create_user(user_params)
+    post :create, params: { user: user_params }
   end
 end
