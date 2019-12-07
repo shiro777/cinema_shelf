@@ -1,0 +1,147 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+inherit_from: rubocop-todo.yml
+
+AllCops:
+  TargetRubyVersion: 2.6.3
+  Exclude:
+    - '**/templates/**/*'
+    - '**/vendor/**/*'
+    - '**/node_modules/**/*'
+
+# Lint/AssignmentInCondition:
+#   Enabled: false
+
+# Metrics/AbcSize:
+#   Max: 20 # default 15
+
+# Metrics/CyclomaticComplexity:
+#   Max: 10 # default 6
+
+# Metrics/LineLength:
+#   Max: 120 # default 80
+
+# Metrics/MethodLength:
+#   Max: 15 # default 10
+
+# Metrics/ParameterLists:
+#   Enabled: false
+
+# Metrics/PerceivedComplexity:
+#   Max: 8 # default 7
+
+# Style/AccessModifierIndentation:
+#   EnforcedStyle: outdent
+
+# Style/AlignParameters:
+#   Enabled: false
+
+Style/AndOr:
+  EnforcedStyle: conditionals
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/BlockDelimiters:
+  EnforcedStyle: braces_for_chaining
+
+Style/BracesAroundHashParameters:
+  EnforcedStyle: context_dependent
+
+Style/CaseIndentation:
+  Enabled: false
+
+# Style/CommentIndentation:
+#   Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/DoubleNegation:
+  Enabled: false
+
+# Style/DotPosition:
+#   EnforcedStyle: trailing
+
+# Style/EmptyElse:
+#   EnforcedStyle: empty
+
+# Style/EmptyLinesAroundBlockBody:
+#   Enabled: false
+
+# Style/EmptyLinesAroundClassBody:
+#   EnforcedStyle: empty_lines
+
+# Style/EmptyLinesAroundModuleBody:
+#   EnforcedStyle: empty_lines
+
+# Style/ExtraSpacing:
+#   Enabled: false
+
+# Style/FirstParameterIndentation:
+#   Enabled: false
+
+# Style/GuardClause:
+#   MinBodyLength: 5
+
+Style/HashSyntax:
+  EnforcedStyle: no_mixed_keys
+
+Style/IndentHash:
+  EnforcedStyle: consistent
+
+Layout/IndentationConsistency:
+  EnforcedStyle: indented_internal_methods
+
+# Style/Lambda:
+#   Enabled: false
+
+# Style/NumericLiterals:
+#   MinDigits: 7
+
+Style/PredicateName:
+  NamePrefix:
+    - "is_"
+    - "have_"
+  NamePrefixBlacklist:
+    - "is_"
+    - "have_"
+
+# Style/RedundantSelf:
+#   Enabled: false
+
+# Style/SignalException:
+#   EnforcedStyle: only_raise
+
+Style/SpaceAroundOperators:
+  MultiSpaceAllowedForOperators:
+    - "="
+    - "=>"
+    - "||"
+
+# Style/SpaceInsideBlockBraces:
+#   Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/StringLiteralsInInterpolation:
+  AutoCorrect: false
+
+# Style/SingleLineBlockParams:
+#   Enabled: false
+
+# Style/SingleSpaceBeforeFirstArg:
+#   Enabled: false
+
+# Style/TrailingBlankLines:
+#   EnforcedStyle: final_newline
+
+Style/TrailingComma:
+  EnforcedStyleForMultiline: consistent_comma
+
+# Style/WordArray:
+#   EnforcedStyle: brackets

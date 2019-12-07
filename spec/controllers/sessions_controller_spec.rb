@@ -24,6 +24,8 @@ RSpec.describe SessionsController, type: :controller do
       expect(logged_in?).to be true
       expect(response).to redirect_to user_url(user)
       delete :destroy
+      # rspec では下記がないと cookies.delete が反映されない
+      cookies.update(response.cookies)
       expect(logged_in?).to be false
       expect(response).to redirect_to root_url
     end
