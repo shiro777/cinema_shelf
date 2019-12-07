@@ -2,10 +2,13 @@
   .login-form
     = form_with(scope: :session, url: login_url, local: true) do |f|
       .field
-        = f.label :email, 'メールアドレス'
-        = f.email_field :email, autocomplete: 'on', class: 'email', id: 'email'
+        = f.label :email, "メールアドレス"
+        = f.email_field :email, autocomplete: "on", class: "email", id: "email"
       .field
-        = f.label :password, 'パスワード'
-        = f.password_field :password, class: 'password', id: 'password'
+        = f.label :password, "パスワード"
+        = f.password_field :password, class: "password", id: "password"
+      .field
+        = f.check_box :remember_me, class: "remember-me", id: "remember_me"
+        = f.label :checkbox, "次回以降、パスワードを省略する"
       .action
-        = f.submit 'ログイン', class: ['submit','button']
+        = f.submit "ログイン", class: ["submit","button"]

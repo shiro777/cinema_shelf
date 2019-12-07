@@ -29,7 +29,21 @@
     color: $font-black;
     font-size: 1.6rem;
     text-align: center;
+
+    &[type=checkbox] {
+      display: inline-block;
+      margin: 10px 5px 10px 0;
+      width: auto;
+    }
+
+    &+Label {
+      display: inline-block;
+      width: auto;
+      margin: 10px 0 10px;
+      font-size: 1.5rem;
+    }
   }
+
 
   .submit.button {
     @include button;

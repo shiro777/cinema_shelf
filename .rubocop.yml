@@ -8,9 +8,9 @@ require:
 AllCops:
   TargetRubyVersion: 2.6.3
   Exclude:
-    - '**/templates/**/*'
-    - '**/vendor/**/*'
-    - '**/node_modules/**/*'
+    - "**/templates/**/*"
+    - "**/vendor/**/*"
+    - "**/node_modules/**/*"
 
 Rails:
   Enabled: true
@@ -23,6 +23,7 @@ Rails/SkipsModelValidations:
 
 RSpec/ExampleLength:
   Max: 8
+  Exclude: spec/featutres/*.rb
 
 RSpec/NotToNot:
   Enabled: false
