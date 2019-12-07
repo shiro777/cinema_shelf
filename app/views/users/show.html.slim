@@ -14,8 +14,8 @@
         = icon "far", "user", class: "faa-vertical"
         | Follwer
       .buttons
-        = link_to "編集", @user, class: "button"
-        = link_to "ログアウト", "#", class: "button"
+        = link_to "編集", edit_user_path(current_user), class: "button"
+        = link_to "ログアウト", logout_path, method: :delete, class: "button"
     .user-reviews
       .heading.faa-parent.animated-hover
         = icon "far", "star", class: "faa-wrench"
