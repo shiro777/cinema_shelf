@@ -31,6 +31,7 @@ group :development, :test do
   gem 'rubocop-performance'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
+  gem 'solargraph'
 end
 
 group :development do
