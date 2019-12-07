@@ -1,13 +1,13 @@
 .signup-wrapper
   .signup-form
     = form_with(model: @user, url: signup_url, local: true) do |f|
-      = render 'shared/error_messages'
+      = render "shared/error_messages"
       .field
         = f.label :name
-        = f.text_field :name, autofocus: true, autocomplete: 'on', class: 'name'
+        = f.text_field :name, autofocus: true, autocomplete: "on", class: "name"
       .field
         = f.label :email
-        = f.email_field :email, autocomplete: 'on', class: 'email'
+        = f.email_field :email, autocomplete: "on", class: "email"
       .field
         = f.label :password
         p
@@ -17,4 +17,4 @@
         = f.label :password_confirmation
         = f.password_field :password_confirmation, class: "password"
       .action
-        = f.submit '新規登録', class: ['submit','button']
+        = f.submit "新規登録", class: ["submit","button"]

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
   def new; end
 
@@ -8,8 +10,8 @@ class SessionsController < ApplicationController
       remember @user
       redirect_to @user
     else
-      flash.now[:danger] = 'メールアドレスかパスワードが間違っています。'
-      render 'new'
+      flash.now[:danger] = "メールアドレスかパスワードが間違っています。"
+      render "new"
     end
   end
 

@@ -1,24 +1,26 @@
-require 'rails_helper'
+# frozen_string_literal: true
+
+require "rails_helper"
 
 RSpec.describe SessionsController, type: :controller do
-  describe '#new' do
+  describe "#new" do
     before do
       get :new
     end
 
-    it 'returns http success' do
+    it "returns http success" do
       expect(response).to have_http_status :success
     end
 
-    it 'renders template' do
-      expect(response).to render_template 'sessions/new'
+    it "renders template" do
+      expect(response).to render_template "sessions/new"
     end
   end
 
-  describe '#create, #destroy' do
+  describe "#create, #destroy" do
     let(:user) { FactoryBot.create(:user) }
 
-    it 'logs in / out and redirects successfully' do
+    it "logs in / out and redirects successfully" do
       post :create, params: { session: { email: user.email,
                                          password: user.password } }
       expect(logged_in?).to be true

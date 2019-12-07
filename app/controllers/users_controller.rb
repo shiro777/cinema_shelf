@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :user_params, only: %w[create update]
 
@@ -18,10 +20,10 @@ class UsersController < ApplicationController
     if @user.save
       # @user.send_activation_email
       log_in @user
-      flash[:success] = '新規登録が完了しました。'
+      flash[:success] = "新規登録が完了しました。"
       redirect_to @user
     else
-      render action: 'new'
+      render action: "new"
     end
   end
 

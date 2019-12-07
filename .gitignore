@@ -32,3 +32,4 @@
 
 .env
 .pryrc
+.solargraph.yml
