@@ -6,7 +6,7 @@
             = image_tag "no_image.png"
         - else
             = image_tag @user.image
-      p
+      p.user-name
         = @user.name
       .follow.faa-parent.animated-hover
         = icon "far", "user", class: "faa-vertical"

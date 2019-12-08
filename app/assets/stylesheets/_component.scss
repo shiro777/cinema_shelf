@@ -175,3 +175,24 @@
     background-color: $background-filter-hover-blue;
   }
 }
+
+@mixin filter-paginate {
+  display: inline-block;
+  width: 80px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: $background-filter-blue;
+  color: white;
+  font-size: 2rem;
+  line-height: 40px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  transition: 0.2s;
+  @include box-shadow-light-s;
+  @include text-shadow-s;
+
+  &:hover {
+    background-color: $background-filter-hover-blue;
+  }
+}

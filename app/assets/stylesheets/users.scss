@@ -1,14 +1,13 @@
 // users-index
 .users-wrapper {
-  height: 1000px;
-  padding-top: 60px;
+  padding: 60px 0;
   background: image-url('background.jpg') top center / cover;
 }
 
 .users-container {
-  width: 970px;
+  width: 960px;
   margin: 0 auto;
-  padding: 30px;
+  padding: 30px 30px 10px;
   font-size: 2.4rem;
   @include component-template;
 
@@ -18,13 +17,80 @@
     @include component-template-2
   }
 
-  .user-box {
-    display: block;
-    margin: 10px 0;
-    padding: 10px 20px;
-    font-size: 2rem;
-    @include text-shadow-m;
-    @include component-template-3
+  .pagination[role=navigation] {
+    padding: 20px 20px;
+
+    &~.pagination[role=navigation] {
+      padding-top: 5px;
+    }
+
+    .previous_page,
+    [aria-label],
+    .next_page {
+      @include filter-paginate;
+    }
+
+    [aria-label] {
+      width: 30px;
+
+      &.current {
+        background-color: $background-filter-blue-light;
+
+        &:hover {
+          background-color: $background-filter-blue-light;
+        }
+      }
+    }
+  }
+
+  .users {
+    display: flex;
+    width: 900px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: flex-start;
+
+    li {
+      width: 168px;
+      height: 168px;
+      margin-bottom: 15px;
+
+      a.user-box {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: 0.2s;
+        @include component-template-2;
+
+        &:hover {
+          background-color: $background-blue-dark-hover;
+        }
+
+        img.user-image {
+          display: block;
+          width: 60%;
+          margin-bottom: 10px;
+          border-radius: 50%;
+          background-color: $background-black-light;
+          @include border;
+          @include box-shadow-light-s;
+        }
+
+        p.user-name {
+          width: 70%;
+          font-size: 2rem;
+          text-align: center;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          @include text-shadow-m;
+        }
+      }
+    }
   }
 }
 
@@ -106,7 +172,6 @@
       @include component-template;
 
       .user-image {
-
         img {
           width: 200px;
           height: 200px;

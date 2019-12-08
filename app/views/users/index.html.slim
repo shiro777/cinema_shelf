@@ -3,7 +3,15 @@
     .heading
       h1
         | All Users
+    = will_paginate previous_label: " &lt 前へ", next_label: "次へ &gt"
     ul.users
       - @users.each do |user|
         li
-          = link_to user.name, user, class: "user-box"
+          = link_to user, class: "user-box"
+            - if user.image.nil?
+                = image_tag "no_image.png", class: "user-image"
+            - else
+                = image_tag user.image, class: "user-image"
+            p.user-name
+              = user.name
+    = will_paginate previous_label: " &lt 前へ", next_label: "次へ &gt"
