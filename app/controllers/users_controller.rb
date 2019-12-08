@@ -2,7 +2,7 @@
 
 class UsersController < ApplicationController
   before_action :user_params, only: %w[create update]
-  before_action :forbid_not_logged_in_user, only: %w[show edit update]
+  before_action :forbid_not_logged_in_user, only: %w[edit update]
   before_action :ensure_correct_user, only: %w[edit update]
 
   def index
@@ -58,6 +58,6 @@ class UsersController < ApplicationController
     end
 
     def ensure_correct_user
-      redirect_to root_url unless params[:id] == current_user.id
+      redirect_to root_url unless params[:id].to_i == current_user.id
     end
 end

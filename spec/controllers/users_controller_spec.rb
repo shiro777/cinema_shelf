@@ -34,54 +34,122 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-    describe "#show" do
+  describe "#show" do
+    before do
+      get :show, params: { id: user.id}
+    end
+
+    it "responds http success" do
+      expect(response).to have_http_status :success
+    end
+
+    it "renders a template" do
+      expect(response).to render_template "users/show"
+    end
+  end
+
+  describe "#edit" do
+    context "logged in as a correct user" do
       before do
-        user = FactoryBot.create(:user)
-        get :show, params: { id: user.id}
+        log_in user
+        get :edit, params: {id: user.id}
       end
 
       it "responds http success" do
         expect(response).to have_http_status :success
       end
 
-      it "responds http success" do
-        expect(response).to render_template user_path(user)
+      it "renders a template" do
+        expect(response).to render_template "users/edit"
       end
     end
 
-  describe "#edit" do
-    before do
-      user = FactoryBot.create(:user)
-      get :edit, params: { id: user.id }
+    context "logged in as a other user" do
+      before do
+        log_in other_user
+        get :edit, params: {id: user.id}
+      end
+
+      it "redirects root url" do
+        expect(response).to redirect_to root_url
+      end
     end
 
-    it "returns http success" do
-      expect(response).to have_http_status :success
-    end
+    context "not logged in" do
+      before do
+        get :edit, params: {id: user.id}
+      end
 
-    it "renders template" do
-      expect(response).to render_template(:edit)
+      it "redirects login url" do
+        expect(response).to redirect_to login_url
+      end
     end
   end
 
   describe "#update" do
-    before do
-      update_user(user_params)
+    context "logged in as a correct user" do
+      before do
+        log_in user
+        update_user user, other_user_params
+      end
+
+      it "redirects successfully" do
+        expect(response).to redirect_to user_url(user.id)
+      end
+
+      it "changes user name" do
+        expect(assigns(:user).name).to_not eq user.name
+      end
+
+      it "changes user name" do
+        expect(user.reload.name).to eq other_user_params[:name]
+      end
     end
 
-    it "redirects successfully after edit" do
-      expect(response).to redirect_to user_url(user.id)
+    context "logged in as a other user" do
+      before do
+        log_in other_user
+        update_user user, other_user_params
+      end
+
+      it "redirects root url" do
+        expect(response).to redirect_to root_url
+      end
+
+      it "doesn't change user name" do
+        expect(user.name).to_not eq other_user_params[:name]
+      end
+    end
+
+    context "not logged in" do
+      before do
+        update_user user, other_user_params
+      end
+
+      it "redirects login url" do
+        expect(response).to redirect_to login_url
+      end
+
+      it "doesn't change user name" do
+        expect(user.name).to_not eq other_user_params[:name]
+      end
     end
   end
 
+  let(:user) { FactoryBot.create(:user) }
+  let(:other_user) { FactoryBot.create(:other_user) }
   let(:user_params) { FactoryBot.attributes_for(:user) }
-  # let(:user) { FactoryBot.create(:user) }
+  let(:other_user_params) { FactoryBot.attributes_for(:other_user) }
 
   def create_user(user_params)
     post :create, params: { user: user_params }
   end
 
-  def update_user(user_params)
+  def log_in(user)
+    session[:user_id] = user.id
+  end
+
+  def update_user(user, user_params)
     patch :update, params: { id: user.id, user: user_params }
   end
 end
