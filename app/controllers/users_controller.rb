@@ -2,11 +2,11 @@
 
 class UsersController < ApplicationController
   before_action :user_params, only: %w[create update]
-  before_action :forbid_not_logged_in_user, only: %w[edit update]
+  before_action :forbid_not_logged_in_user, only: %w[index edit update]
   before_action :ensure_correct_user, only: %w[edit update]
 
   def index
-    # @users = User.paginate(page: params[:page])
+    @users = User.all
   end
 
   def show
@@ -20,7 +20,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      # @user.send_activation_email
       log_in @user
       flash[:success] = "新規登録が完了しました。"
       redirect_to @user
@@ -53,11 +52,12 @@ class UsersController < ApplicationController
     def forbid_not_logged_in_user
       unless logged_in?
         flash[:danger] = "ログインして下さい。"
+        store_location
         redirect_to login_url
       end
     end
 
     def ensure_correct_user
-      redirect_to root_url unless params[:id].to_i == current_user.id
+      redirect_to root_url unless current_user?
     end
 end

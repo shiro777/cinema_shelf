@@ -3,6 +3,29 @@
 require "rails_helper"
 
 RSpec.describe UsersController, type: :controller do
+  describe "#index" do
+    context "as a logged_in user" do
+      before do
+        log_in user
+        get :index
+      end
+
+      it "responds http success" do
+        expect(response).to have_http_status :success
+      end
+    end
+
+    context "not as a logged_in user" do
+      before do
+        get :index
+      end
+
+      it "redirects login url" do
+        expect(response).to redirect_to login_url
+      end
+    end
+  end
+
   describe "#new" do
     before do
       get :new

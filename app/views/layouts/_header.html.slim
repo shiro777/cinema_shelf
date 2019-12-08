@@ -6,7 +6,7 @@ header.clearfix
   nav
     = link_to "Cinemas", "#"
     - if logged_in?
-      = link_to "Users", "#"
+      = link_to "Users", users_path
       = link_to "Reviews", "#"
       = link_to "Review投稿", "#"
       = link_to "Profile", current_user

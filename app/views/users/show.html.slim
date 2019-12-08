@@ -1,10 +1,11 @@
 .user-wrapper
   .user-container.clearfix
     .user-information
-      - if @user.image.nil?
-          = image_tag "no_image.png"
-      - else
-          = image_tage @user.image.url
+      .user-image
+        - if @user.image.nil?
+            = image_tag "no_image.png"
+        - else
+            = image_tag @user.image
       p
         = @user.name
       .follow.faa-parent.animated-hover

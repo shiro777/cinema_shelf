@@ -150,6 +150,11 @@
   @include border-bottom-rich;
 }
 
+@mixin component-template-3 {
+  background-color: $background-blue-more-dark;
+  @include border-bottom-rich;
+}
+
 @mixin filter {
   display: inline-block;
   width: 110px;

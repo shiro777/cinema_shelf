@@ -1,0 +1,9 @@
+.users-wrapper
+  .users-container
+    .heading
+      h1
+        | All Users
+    ul.users
+      - @users.each do |user|
+        li
+          = link_to user.name, user, class: "user-box"

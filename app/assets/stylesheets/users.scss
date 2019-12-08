@@ -1,3 +1,33 @@
+// users-index
+.users-wrapper {
+  height: 1000px;
+  padding-top: 60px;
+  background: image-url('background.jpg') top center / cover;
+}
+
+.users-container {
+  width: 970px;
+  margin: 0 auto;
+  padding: 30px;
+  font-size: 2.4rem;
+  @include component-template;
+
+  .heading {
+    padding: 10px 20px;
+    @include text-shadow-m;
+    @include component-template-2
+  }
+
+  .user-box {
+    display: block;
+    margin: 10px 0;
+    padding: 10px 20px;
+    font-size: 2rem;
+    @include text-shadow-m;
+    @include component-template-3
+  }
+}
+
 // users-new
 .signup-wrapper {
   height: 750px;
@@ -75,13 +105,17 @@
       @include text-shadow-m;
       @include component-template;
 
-      img {
-        width: 250px;
-        height: 250px;
-        margin-bottom: 20px;
-        border-radius: 50%;
-        @include border;
-        @include box-shadow-light-m;
+      .user-image {
+
+        img {
+          width: 200px;
+          height: 200px;
+          margin-bottom: 20px;
+          border-radius: 50%;
+          background-color: $background-black-light;
+          @include border;
+          @include box-shadow-light-m;
+        }
       }
 
       p {
