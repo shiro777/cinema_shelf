@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  before_action :user_params, only: %w[create update]
-  before_action :forbid_not_logged_in_user, only: %w[index edit update]
+  before_action :forbid_not_logged_in_user, only: %w[index edit update destroy]
   before_action :ensure_correct_user, only: %w[edit update]
+  before_action :ensure_admin_user, only: :destroy
 
   def index
     @users = User.paginate(page: params[:page], per_page: 20)
@@ -63,5 +63,9 @@ class UsersController < ApplicationController
     def ensure_correct_user
       @user = User.find_by(id: params[:id])
       redirect_to root_url unless current_user? @user
+    end
+
+    def ensure_admin_user
+      redirect_to root_url unless current_user.admin?
     end
 end

@@ -24,7 +24,7 @@ RSpec.describe UsersController, type: :controller do
         get :index
       end
 
-      it "redirects login url" do
+      it "redirects to login url" do
         expect(response).to redirect_to login_url
       end
     end
@@ -56,7 +56,7 @@ RSpec.describe UsersController, type: :controller do
       expect(response).to redirect_to user_url(session[:user_id])
     end
 
-    it "changes Users count after sign up" do
+    it "changes User count after sign up" do
       expect { create_user user_params }.to change(User, :count).by(1)
     end
 
@@ -103,7 +103,7 @@ RSpec.describe UsersController, type: :controller do
         get :edit, params: {id: user.id}
       end
 
-      it "redirects root url" do
+      it "redirects to root url" do
         expect(response).to redirect_to root_url
       end
     end
@@ -113,7 +113,7 @@ RSpec.describe UsersController, type: :controller do
         get :edit, params: {id: user.id}
       end
 
-      it "redirects login url" do
+      it "redirects to login url" do
         expect(response).to redirect_to login_url
       end
     end
@@ -145,7 +145,7 @@ RSpec.describe UsersController, type: :controller do
         update_user user, other_user_params
       end
 
-      it "redirects root url" do
+      it "redirects to root url" do
         expect(response).to redirect_to root_url
       end
 
@@ -159,7 +159,7 @@ RSpec.describe UsersController, type: :controller do
         update_user user, other_user_params
       end
 
-      it "redirects login url" do
+      it "redirects to login url" do
         expect(response).to redirect_to login_url
       end
 
@@ -169,8 +169,43 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
+  describe "#destroy" do
+    context "as a admin user" do
+      before do
+        log_in admin_user
+      end
+
+      it "redirects to users url" do
+        destroy_user other_user
+        expect(response).to redirect_to users_url
+      end
+
+      it "doesn't change User count" do
+        other_user = FactoryBot.create(:other_user)
+        expect{ destroy_user other_user }.to change(User, :count).by(-1)
+      end
+    end
+
+    context "not as a admin user" do
+      before do
+        log_in user
+      end
+
+      it "redirects to root url" do
+        destroy_user other_user
+        expect(response).to redirect_to root_url
+      end
+
+      it "doesn't change User count" do
+        other_user = FactoryBot.create(:other_user)
+        expect{ destroy_user other_user }.to change(User, :count).by(0)
+      end
+    end
+  end
+
   let(:user) { FactoryBot.create(:user) }
   let(:other_user) { FactoryBot.create(:other_user) }
+  let(:admin_user) { FactoryBot.create(:user, :admin) }
   let(:user_params) { FactoryBot.attributes_for(:user) }
   let(:other_user_params) { FactoryBot.attributes_for(:other_user) }
 
@@ -184,5 +219,9 @@ RSpec.describe UsersController, type: :controller do
 
   def update_user(user, user_params)
     patch :update, params: { id: user.id, user: user_params }
+  end
+
+  def destroy_user(user)
+    delete :destroy, params: { id: user.id }
   end
 end

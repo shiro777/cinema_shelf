@@ -45,18 +45,19 @@
   }
 
   .users {
-    display: flex;
+    display: block;
     width: 900px;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start;
-    align-content: flex-start;
 
     li {
+      display: inline-block;
       position: relative;
       width: 168px;
       height: 168px;
-      margin-bottom: 15px;
+      margin: 0 15px 15px 0;
+
+      &:nth-of-type(5n) {
+        margin-right: 0;
+      }
 
       a.user-box {
         display: flex;
