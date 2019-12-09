@@ -1,0 +1,15 @@
+li
+  = link_to user, class: "user-box"
+    - if user.image.nil?
+      = image_tag "no_image.png", class: "user-image"
+    - else
+      = image_tag user.image, class: "user-image"
+    p.user-name
+      = user.name
+  - if current_user.admin? && !current_user?(user)
+    = link_to user_path(user), method: :delete,
+                          class: "mini-button faa-parent animated-hover",
+                          data: { confirm: "ユーザー[#{user.name}]を削除しますか。" }
+      = icon "far", "window-close", class: "faa-pulse"
+      span.delete
+        | 削除

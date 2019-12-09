@@ -13,6 +13,10 @@ RSpec.describe UsersController, type: :controller do
       it "responds http success" do
         expect(response).to have_http_status :success
       end
+
+      it "renders template" do
+        expect(response.body).to render_template "users/index"
+      end
     end
 
     context "not as a logged_in user" do
@@ -54,6 +58,12 @@ RSpec.describe UsersController, type: :controller do
 
     it "changes Users count after sign up" do
       expect { create_user user_params }.to change(User, :count).by(1)
+    end
+
+    it "can't sign up with the admin right" do
+      admin_params = FactoryBot.attributes_for(:user, :admin)
+      create_user admin_params
+      expect(assigns(:user).admin).to be false
     end
   end
 

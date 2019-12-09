@@ -28,18 +28,21 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-    @user = User.find(params[:id])
-  end
+  def edit; end
 
   def update
-    @user = User.find_by(id: params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = 'プロフィールが更新されました。'
       redirect_to @user
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    User.find(params[:id]).destroy
+    flash[:success] = "ユーザーを削除しました。"
+    redirect_to users_url
   end
 
   private
@@ -58,6 +61,7 @@ class UsersController < ApplicationController
     end
 
     def ensure_correct_user
-      redirect_to root_url unless current_user?
+      @user = User.find_by(id: params[:id])
+      redirect_to root_url unless current_user? @user
     end
 end

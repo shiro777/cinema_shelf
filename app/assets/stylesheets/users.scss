@@ -27,18 +27,19 @@
     .previous_page,
     [aria-label],
     .next_page {
-      @include filter-paginate;
+      @include filter;
+    }
+
+    .previous_page,
+    .next_page {
+      width: 80px;
     }
 
     [aria-label] {
       width: 30px;
 
       &.current {
-        background-color: $background-filter-blue-light;
-
-        &:hover {
-          background-color: $background-filter-blue-light;
-        }
+        background-color: $background-blue-light-hover;
       }
     }
   }
@@ -52,6 +53,7 @@
     align-content: flex-start;
 
     li {
+      position: relative;
       width: 168px;
       height: 168px;
       margin-bottom: 15px;
@@ -67,12 +69,13 @@
         @include component-template-2;
 
         &:hover {
-          background-color: $background-blue-dark-hover;
+          background-color: $background-blue-light-hover;
         }
 
         img.user-image {
           display: block;
-          width: 60%;
+          width: 100px;
+          height: 102px;
           margin-bottom: 10px;
           border-radius: 50%;
           background-color: $background-black-light;
@@ -88,6 +91,31 @@
           overflow: hidden;
           text-overflow: ellipsis;
           @include text-shadow-m;
+        }
+      }
+
+      .mini-button {
+        position: absolute;
+        top: 3px;
+        right: 3px;
+        padding: 3px;
+        background-color: $background-white-transparent;
+        border-radius: 2px;
+        font-size: 1.4rem;
+        @include text-shadow-s;
+
+        &:hover {
+          background-color: $background-white-transparent-hover;
+        }
+
+        .far {
+          padding-right: 3px;
+          vertical-align: middle;
+        }
+
+        .delete {
+          font-size: 1rem;
+          vertical-align: middle;
         }
       }
     }
@@ -171,16 +199,14 @@
       @include text-shadow-m;
       @include component-template;
 
-      .user-image {
-        img {
-          width: 200px;
-          height: 200px;
-          margin-bottom: 20px;
-          border-radius: 50%;
-          background-color: $background-black-light;
-          @include border;
-          @include box-shadow-light-m;
-        }
+      img.user-image {
+        width: 150px;
+        height: 152px;
+        margin-bottom: 20px;
+        border-radius: 50%;
+        background-color: $background-black-light;
+        @include border;
+        @include box-shadow-light-m;
       }
 
       p {
