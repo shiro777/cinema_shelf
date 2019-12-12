@@ -11,19 +11,34 @@ AllCops:
     - "**/templates/**/*"
     - "**/vendor/**/*"
     - "**/node_modules/**/*"
+    - "config/environments/*"
+    - spec/rails_helper.rb
+    - spec/spec_helper.rb
 
 Rails:
   Enabled: true
 
-Ralis/HelperInstanceVariable:
+Rails/HelperInstanceVariable:
   Enabled: false
 
 Rails/SkipsModelValidations:
   Enabled: false
 
+RSpec::Capybara::FeatureMethods:
+  EnabledMethods:
+    - "feature"
+    - "scenario"
+
 RSpec/ExampleLength:
   Max: 8
-  Exclude: spec/featutres/*.rb
+  Exclude:
+    - "spec/features/*.rb"
+
+RSpec/InstanceVariable:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Max: 3
 
 RSpec/NotToNot:
   Enabled: false
@@ -37,18 +52,18 @@ Metrics/AbcSize:
 Metrics/BlockLength:
   Exclude:
     - "spec/**/*.rb"
-    - "Gemfile"
     - "config/environments/*.rb"
-    - "config/routes.rb"
+    - config/routes.rb
+    - Gemfile
 
 # Metrics/CyclomaticComplexity:
 #   Max: 10 # default 6
 
-# Metrics/LineLength:
-#   Max: 120 # default 80
+Metrics/LineLength:
+  Max: 120 # default 80
 
-# Metrics/MethodLength:
-#   Max: 15 # default 10
+Metrics/MethodLength:
+  Max: 15 # default 10
 
 # Metrics/ParameterLists:
 #   Enabled: false
@@ -127,11 +142,11 @@ Layout/IndentationConsistency:
 
 Naming/PredicateName:
   NamePrefix:
-    - "is_"
-    - "have_"
+    - is_
+    - have_
   ForbiddenPrefixes:
-    - "is_"
-    - "have_"
+    - is_
+    - have_
 
 # Style/RedundantSelf:
 #   Enabled: false

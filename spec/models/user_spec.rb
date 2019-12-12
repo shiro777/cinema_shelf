@@ -34,7 +34,7 @@ RSpec.describe User, type: :model do
     expect(user).to_not be_valid
   end
 
-  specify "email validation accept valid addresses" do
+  it "email validation accept valid addresses" do
     valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
                          first.last@foo.jp alice+bob@baz.cn]
     valid_addresses.each do |valid_address|
@@ -43,7 +43,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  specify "email validation reject invalid addresses" do
+  it "email validation reject invalid addresses" do
     invalid_addresses = %w[user@example,com user_at_foo.org user.name@example.
                            foo@bar_baz.com foo@bar+baz.com]
     invalid_addresses.each do |invalid_address|
@@ -52,59 +52,18 @@ RSpec.describe User, type: :model do
     end
   end
 
-  specify "email addresses is unique" do
+  it "email addresses is unique" do
     user.save
     expect(duplicate_user).to_not be_valid
   end
 
-  specify "password is present (nonblank)" do
+  it "password is present (nonblank)" do
     user.password = user.password_confirmation = " " * 6
     expect(user).to_not be_valid
   end
 
-  specify "password have a minimum length" do
+  it "password have a minimum length" do
     user.password = user.password_confirmation = "a" * 5
     expect(user).to_not be_valid
   end
-
-  # test 'authenticated? should return false for a user with nil digest' do
-  #   assert_not @user.authenticated?(:remember, '')
-  # end
-
-  # test 'associated microposts should be destroyed' do
-  #   @user.save
-  #   @user.microposts.create!(content: 'Lorem ipsum')
-  #   assert_difference 'Micropost.count', -1 do
-  #     @user.destroy
-  #   end
-  # end
-
-  # test 'should follow and unfollow a user' do
-  #   michael = users(:michael)
-  #   archer  = users(:archer)
-  #   assert_not michael.following?(archer)
-  #   michael.follow(archer)
-  #   assert michael.following?(archer)
-  #   assert archer.followers.include?(michael)
-  #   michael.unfollow(archer)
-  #   assert_not michael.following?(archer)
-  # end
-
-  # test 'feed should have the right posts' do
-  #   michael = users(:michael)
-  #   archer  = users(:archer)
-  #   lana    = users(:lana)
-  #   # Posts from followed user
-  #   lana.microposts.each do |post_following|
-  #     assert michael.feed.include?(post_following)
-  #   end
-  #   # Posts from self
-  #   michael.microposts.each do |post_self|
-  #     assert michael.feed.include?(post_self)
-  #   end
-  #   # Posts from unfollowed user
-  #   archer.microposts.each do |post_unfollowed|
-  #     assert_not michael.feed.include?(post_unfollowed)
-  #   end
-  # end
 end

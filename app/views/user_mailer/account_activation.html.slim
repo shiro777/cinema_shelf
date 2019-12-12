@@ -1,0 +1,8 @@
+h1 CinemaShelf
+
+p
+  | #{@user.name} 様
+
+p 下記のリンクをクリックしてアカウントを有効化してください。
+
+= link_to "アカウントを有効", edit_account_activation_url(@user.activation_token, email: @user.email)

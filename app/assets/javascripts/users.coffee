@@ -1,5 +1,5 @@
 $ ->
-  $('#checkbox_parent_field').click ->
+  $('#checkbox_parent_field').on 'click', ->
     checkbox =  $('input[type=checkbox')
     checkbox_status =  checkbox.prop('checked')
     if checkbox_status

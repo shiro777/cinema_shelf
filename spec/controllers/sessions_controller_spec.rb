@@ -37,7 +37,7 @@ RSpec.describe SessionsController, type: :controller do
         expect(response).to redirect_to user_url(user)
       end
 
-      context "after log out" do
+      context "when log out" do
         before do
           log_out
         end
@@ -73,7 +73,7 @@ RSpec.describe SessionsController, type: :controller do
         expect(response).to redirect_to user_url(user)
       end
 
-      context "after log out" do
+      context "when log out" do
         before do
           log_out
         end
@@ -95,14 +95,14 @@ RSpec.describe SessionsController, type: :controller do
 
   def log_in_with_remembering(user)
     post :create, params: { session: { email: user.email,
-                                    password: user.password,
-                                    remember_me: 1 } }
+                                       password: user.password,
+                                       remember_me: 1 } }
   end
 
   def log_in_without_remembering(user)
     post :create, params: { session: { email: user.email,
-                                    password: user.password,
-                                    remember_me: 0 } }
+                                       password: user.password,
+                                       remember_me: 0 } }
   end
 
   def log_out

@@ -6,11 +6,12 @@ class UsersController < ApplicationController
   before_action :ensure_admin_user, only: :destroy
 
   def index
-    @users = User.paginate(page: params[:page], per_page: 20)
+    @users = User.where(activated: true).paginate(page: params[:page], per_page: 25)
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
+    redirect_to root_url unless @user.activated?
   end
 
   def new
@@ -20,9 +21,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      log_in @user
-      flash[:success] = "新規登録が完了しました。"
-      redirect_to @user
+      @user.send_activation_email
+      flash[:info] = <<~TEXT
+        ご登録のメールアドレスから、アカウントを有効化して下さい。
+      TEXT
+      redirect_to root_url
     else
       render action: "new"
     end
@@ -31,11 +34,11 @@ class UsersController < ApplicationController
   def edit; end
 
   def update
-    if @user.update_attributes(user_params)
-      flash[:success] = 'プロフィールが更新されました。'
+    if @user.update(user_params)
+      flash[:success] = "プロフィールが更新されました。"
       redirect_to @user
     else
-      render 'edit'
+      render "edit"
     end
   end
 
@@ -53,11 +56,11 @@ class UsersController < ApplicationController
     end
 
     def forbid_not_logged_in_user
-      unless logged_in?
-        flash[:danger] = "ログインして下さい。"
-        store_location
-        redirect_to login_url
-      end
+      return if logged_in?
+
+      flash[:danger] = "ログインして下さい。"
+      store_location
+      redirect_to login_url
     end
 
     def ensure_correct_user

@@ -30,6 +30,7 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+solargraph.rb
+.solargraph.yml
 .env
 .pryrc
-.solargraph.yml

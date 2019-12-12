@@ -12,7 +12,7 @@ gem "coffee-rails", "~> 4.2"
 gem "dotenv-rails"
 gem "font-awesome-sass"
 gem "jbuilder", "~> 2.5"
-gem 'jquery-rails'
+gem "jquery-rails"
 gem "mysql2"
 gem "puma", "~> 3.12"
 gem "rails", "~> 5.2.3"
